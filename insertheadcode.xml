@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" group="system" method="upgrade">
+    <name>PLG_SYSTEM_INSERTHEADCODE</name>
+    <author>Pisan Chueachatchai</author>
+    <authorEmail>office@colorpack.co.th</authorEmail>
+    <authorUrl>https://colorpack.co.th/</authorUrl>
+    <creationDate>April 2025</creationDate>
+    <copyright>Copyright (C) 2025 Colorpack Creations Co.,Ltd. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later</license>
+    <version>1.0.0</version>
+    <description>PLG_SYSTEM_INSERTHEADCODE_XML_DESCRIPTION</description>
+    <files>
+        <filename plugin="insertheadcode">insertheadcode.php</filename>
+        <folder>language</folder>
+    </files>
+    <languages folder="language">
+        <language tag="en-GB">en-GB/plg_system_insertheadcode.ini</language>
+        <language tag="en-GB">en-GB/plg_system_insertheadcode.sys.ini</language>
+        <language tag="th-TH">th-TH/plg_system_insertheadcode.ini</language>
+        <language tag="th-TH">th-TH/plg_system_insertheadcode.sys.ini</language>
+    </languages>
+    <config>
+        <fields name="params" addfieldprefix="Joomla\Component\Content\Administrator\Field">
+            <!-- ส่วนของ head_tab -->
+            <fieldset name="head_tab" label="COM_PLUGINS_HEAD_TAB_FIELDSET_LABEL">
+                <field 
+                    name="head_tab_description"
+                    type="note"
+                    class="alert alert-info"
+                    description="PLG_SYSTEM_INSERTHEADCODE_HEAD_TAB_DESCRIPTION"
+                />
+                
+                <field
+                    name="head_code_blocks"
+                    type="subform"
+                    label="PLG_SYSTEM_INSERTHEADCODE_FIELD_HEAD_CODE_BLOCKS_LABEL"
+                    description="PLG_SYSTEM_INSERTHEADCODE_FIELD_HEAD_CODE_BLOCKS_DESC"
+                    multiple="true"
+                    layout="joomla.form.field.subform.repeatable"
+                    icon="list"
+                    min="0"
+                    max="20"
+                >
+                    <form>
+                        <field name="label" type="text" label="PLG_SYSTEM_INSERTHEADCODE_FIELD_LABEL_LABEL" description="PLG_SYSTEM_INSERTHEADCODE_FIELD_LABEL_DESC" />
+                        <field name="code" type="textarea" label="PLG_SYSTEM_INSERTHEADCODE_FIELD_CODE_LABEL" description="PLG_SYSTEM_INSERTHEADCODE_FIELD_CODE_DESC" rows="10" filter="raw" />
+                    </form>
+                </field>
+            </fieldset>
+            
+            <fieldset name="css_tab" label="COM_PLUGINS_CSS_TAB_FIELDSET_LABEL">
+                <field 
+                    name="css_tab_description"
+                    type="note"
+                    class="alert alert-info"
+                    description="PLG_SYSTEM_INSERTHEADCODE_CSS_TAB_DESCRIPTION"
+                />
+                
+                <field
+                    name="load_custom_css"
+                    type="radio"
+                    label="PLG_SYSTEM_INSERTHEADCODE_FIELD_LOAD_CUSTOM_CSS_LABEL"
+                    description="PLG_SYSTEM_INSERTHEADCODE_FIELD_LOAD_CUSTOM_CSS_DESC"
+                    default="auto"
+                    class="btn-group"
+                >
+                    <option value="auto">PLG_SYSTEM_INSERTHEADCODE_OPTION_AUTO</option>
+                    <option value="select">PLG_SYSTEM_INSERTHEADCODE_OPTION_SELECT</option>
+                    <option value="none">PLG_SYSTEM_INSERTHEADCODE_OPTION_NONE</option>
+                </field>
+                
+                <field
+                    name="custom_css_blocks"
+                    type="subform"
+                    label="PLG_SYSTEM_INSERTHEADCODE_FIELD_CUSTOM_CSS_BLOCKS_LABEL"
+                    description="PLG_SYSTEM_INSERTHEADCODE_FIELD_CUSTOM_CSS_BLOCKS_DESC"
+                    multiple="true"
+                    layout="joomla.form.field.subform.repeatable"
+                    icon="list"
+                    min="0"
+                    max="20"
+                    showon="load_custom_css:select"
+                >
+                    <form>
+                        <field
+                            name="label"
+                            type="text"
+                            label="PLG_SYSTEM_INSERTHEADCODE_FIELD_LABEL_LABEL"
+                            description="PLG_SYSTEM_INSERTHEADCODE_FIELD_LABEL_DESC"
+                        />
+                        <field
+                            name="filename"
+                            type="list"
+                            label="PLG_SYSTEM_INSERTHEADCODE_FIELD_FILENAME_LABEL"
+                            description="PLG_SYSTEM_INSERTHEADCODE_FIELD_FILENAME_DESC"
+                        >
+                            <!-- ไม่กำหนดตัวเลือกที่นี่ จะถูกเพิ่มจาก PHP -->
+                        </field>
+                    </form>
+                </field>
+            </fieldset>
+            
+            <fieldset name="body_tab" label="COM_PLUGINS_BODY_TAB_FIELDSET_LABEL">
+                <field 
+                    name="body_tab_description"
+                    type="note"
+                    class="alert alert-info"
+                    description="PLG_SYSTEM_INSERTHEADCODE_BODY_TAB_DESCRIPTION"
+                />
+                
+                <field
+                    name="body_code_blocks"
+                    type="subform"
+                    label="PLG_SYSTEM_INSERTHEADCODE_FIELD_BODY_CODE_BLOCKS_LABEL"
+                    description="PLG_SYSTEM_INSERTHEADCODE_FIELD_BODY_CODE_BLOCKS_DESC"
+                    multiple="true"
+                    layout="joomla.form.field.subform.repeatable"
+                    icon="list"
+                    min="0"
+                    max="20"
+                >
+                    <form>
+                        <field name="label" type="text" label="PLG_SYSTEM_INSERTHEADCODE_FIELD_LABEL_LABEL" description="PLG_SYSTEM_INSERTHEADCODE_FIELD_LABEL_DESC" />
+                        <field name="code" type="textarea" label="PLG_SYSTEM_INSERTHEADCODE_FIELD_CODE_LABEL" description="PLG_SYSTEM_INSERTHEADCODE_FIELD_CODE_DESC" rows="10" filter="raw" />
+                    </form>
+                </field>
+            </fieldset>
+
+            <fieldset name="analytics_tab" label="COM_PLUGINS_ANALYTICS_TAB_FIELDSET_LABEL">
+                <field 
+                    name="analytics_tab_description"
+                    type="note"
+                    class="alert alert-info"
+                    description="PLG_SYSTEM_INSERTHEADCODE_ANALYTICS_TAB_DESCRIPTION"
+                />
+                
+                <!-- Google Tag Manager -->
+                <field
+                    name="gtm_id"
+                    type="text"
+                    label="PLG_SYSTEM_INSERTHEADCODE_FIELD_GTM_ID_LABEL"
+                    description="PLG_SYSTEM_INSERTHEADCODE_FIELD_GTM_ID_DESC"
+                    hint="GTM-XXXXXXX"
+                />
+                
+                <!-- Google Analytics 4 -->
+                <field
+                    name="ga4_id"
+                    type="text"
+                    label="PLG_SYSTEM_INSERTHEADCODE_FIELD_GA4_ID_LABEL"
+                    description="PLG_SYSTEM_INSERTHEADCODE_FIELD_GA4_ID_DESC"
+                    hint="G-XXXXXXXXXX"
+                />
+                
+                <!-- Facebook Pixel -->
+                <field
+                    name="fb_pixel_id"
+                    type="text"
+                    label="PLG_SYSTEM_INSERTHEADCODE_FIELD_FB_PIXEL_ID_LABEL"
+                    description="PLG_SYSTEM_INSERTHEADCODE_FIELD_FB_PIXEL_ID_DESC"
+                    hint="XXXXXXXXXXXXXXXXXX"
+                />
+                
+                <!-- LINE Tag -->
+                <field
+                    name="line_tag_id"
+                    type="text"
+                    label="PLG_SYSTEM_INSERTHEADCODE_FIELD_LINE_TAG_ID_LABEL"
+                    description="PLG_SYSTEM_INSERTHEADCODE_FIELD_LINE_TAG_ID_DESC"
+                    hint="XXXXXXXX"
+                />
+                
+                <!-- ถ้าต้องการเพิ่มแท็กอื่นๆ สามารถเพิ่มที่นี่ -->
+            </fieldset>
+        </fields>
+    </config>
+</extension>
